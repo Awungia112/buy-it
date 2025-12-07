@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Listing Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f20d0d",
+              "background-light": "#f8f5f5",
+              "background-dark": "#221010",
+              "surface-light": "#fcf8f8",
+              "surface-dark": "#1c0d0d",
+              "text-light-primary": "#1c0d0d",
+              "text-dark-primary": "#fcf8f8",
+              "text-light-secondary": "#9c4949",
+              "text-dark-secondary": "#e8cece",
+              "border-light": "#f4e7e7",
+              "border-dark": "#443434"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-4 sm:px-10 py-3 bg-surface-light dark:bg-surface-dark bg-opacity-80 backdrop-blur-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-text-light-primary dark:text-text-dark-primary">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">E-Shop</h2>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary dark:text-primary text-sm font-bold leading-normal" href="#">Categories</a>
+<a class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="#">Sale</a>
+<a class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-border-light dark:bg-border-dark text-text-light-primary dark:text-text-dark-primary gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-primary/20 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-border-light dark:bg-border-dark text-text-light-primary dark:text-text-dark-primary gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-primary/20 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-xl">person</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-border-light dark:bg-border-dark text-text-light-primary dark:text-text-dark-primary gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-primary/20 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+</button>
+</div>
+</header>
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-6">
+<a class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="#">Home</a>
+<span class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium leading-normal">/</span>
+<a class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="#">Men's Fashion</a>
+<span class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium leading-normal">/</span>
+<span class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">T-Shirts</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<!-- SideNavBar / Filters -->
+<aside class="lg:col-span-1">
+<div class="sticky top-28 flex flex-col gap-6 bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-center">
+<h2 class="text-text-light-primary dark:text-text-dark-primary text-lg font-bold">Filters</h2>
+<button class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium hover:text-primary dark:hover:text-primary">Clear All</button>
+</div>
+<!-- Filter Sections -->
+<div class="flex flex-col gap-6">
+<!-- Brand Filter -->
+<div class="border-t border-border-light dark:border-border-dark pt-6">
+<h3 class="text-text-light-primary dark:text-text-dark-primary font-semibold mb-3">Brand</h3>
+<div class="flex flex-col gap-1 text-text-light-primary dark:text-text-dark-primary">
+<label class="flex items-center gap-x-3 py-2 cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary dark:bg-surface-dark dark:checked:bg-primary" type="checkbox"/>
+<span class="text-sm">Brand A</span>
+</label>
+<label class="flex items-center gap-x-3 py-2 cursor-pointer">
+<input class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary dark:bg-surface-dark dark:checked:bg-primary" type="checkbox"/>
+<span class="text-sm">Brand B</span>
+</label>
+<label class="flex items-center gap-x-3 py-2 cursor-pointer">
+<input class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary dark:bg-surface-dark dark:checked:bg-primary" type="checkbox"/>
+<span class="text-sm">Brand C</span>
+</label>
+<label class="flex items-center gap-x-3 py-2 cursor-pointer">
+<input class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary dark:bg-surface-dark dark:checked:bg-primary" type="checkbox"/>
+<span class="text-sm">Brand D</span>
+</label>
+</div>
+</div>
+<!-- Price Filter -->
+<div class="border-t border-border-light dark:border-border-dark pt-6">
+<div class="relative flex w-full flex-col items-start justify-between gap-3">
+<h3 class="text-text-light-primary dark:text-text-dark-primary font-semibold">Price Range</h3>
+<div class="flex h-12 w-full items-end">
+<div class="flex h-1.5 w-full rounded-full bg-border-light dark:bg-border-dark pl-[20%] pr-[20%]">
+<div class="relative">
+<div class="absolute -left-2.5 -top-2.5 flex cursor-pointer flex-col items-center gap-1.5 group">
+<div class="size-5 rounded-full bg-primary ring-2 ring-background-light dark:ring-background-dark group-hover:scale-110 transition-transform"></div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-xs font-medium">$50</p>
+</div>
+</div>
+<div class="h-1.5 flex-1 rounded-full bg-primary"></div>
+<div class="relative">
+<div class="absolute -right-2.5 -top-2.5 flex cursor-pointer flex-col items-center gap-1.5 group">
+<div class="size-5 rounded-full bg-primary ring-2 ring-background-light dark:ring-background-dark group-hover:scale-110 transition-transform"></div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-xs font-medium">$250</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-red-700 dark:hover:bg-red-500 transition-colors">
+                            Apply Filters
+                        </button>
+</div>
+</aside>
+<!-- Main Content / Product Grid -->
+<div class="lg:col-span-3">
+<div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+<h1 class="text-2xl sm:text-3xl font-bold text-text-light-primary dark:text-text-dark-primary mb-4 sm:mb-0">Men's T-Shirts</h1>
+<div class="flex items-center gap-2">
+<label class="text-sm font-medium text-text-light-secondary dark:text-text-dark-secondary" for="sort">Sort by:</label>
+<select class="form-select block w-48 rounded-lg border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-light-primary dark:text-text-dark-primary focus:border-primary focus:ring-primary text-sm" id="sort">
+<option>Newest Arrivals</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Customer Rating</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Product Card 1-6 (Example) -->
+<div class="group flex flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative overflow-hidden">
+<img class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Plain white t-shirt on a hanger" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuzAndUlFI7E9qGM7MYGw4xDcPsxd-szMlPViCv9p4-GCuq24xg2gh-g8ZrZkLi9-kUPGm24EqD3a_VTp6sTGka42H8t1I7twddBPHjLkNQ8aAd-ex4FuzCsYgIuN16OHfzAG2NIXhcxrm1QYBAAXE8-1NTFFumjykFVmhUktT8MyqOqG3vUno5P5zMP5EtLervLvWKkR4VPAt4eiENltdCvpxGnpwkhE3AUByo_x4-6VKEFCuBttLQSOFBcp40Hvt0N1DZDMgEIN4"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
+<button class="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-red-700">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4">
+<h3 class="text-base font-semibold text-text-light-primary dark:text-text-dark-primary truncate">Classic Crew Neck Tee</h3>
+<p class="text-lg font-bold text-primary">$19.99</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base">star_half</span>
+<span class="text-xs text-text-light-secondary dark:text-text-dark-secondary ml-1">(124)</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative overflow-hidden">
+<img class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Plain black t-shirt on a hanger" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1XeJc01wO6vxdGPrwY-V-qU3PgrRPJ0o4_KCgo2SDHdR_20iImqIU9cq558XgAwmOv73KpDqcN9kQ705GmMz9Nh1hq-ny0Ou3dIx8QFwcOqc2LU5sXI9Dzl0S7oI2WNQZy0dIdm0gGK6Sq0qzsq0AdoMjqTVE9V54igRUc2NMU-gr5l3AqvAKanOJ8uu2BmFw4HrXt5qFEcP2aIenebixDMkMo8Cklokvb6PMN3qmqiFa6toy6CMMRRCaWdPHB-du-cn335Ib9SZ3"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
+<button class="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-red-700">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4">
+<h3 class="text-base font-semibold text-text-light-primary dark:text-text-dark-primary truncate">V-Neck Cotton Tee</h3>
+<p class="text-lg font-bold text-primary">$24.50</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs text-text-light-secondary dark:text-text-dark-secondary ml-1">(98)</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative overflow-hidden">
+<img class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Graphic print t-shirt laid flat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCik12aemyTaiffi_KomyAr2rU1hNP-mHURZQH-Swxtb7fyqu_PzFAC9pvH3u96R27e3jL-rcNkFzV38qj3PTaq4VFg2T_ZI8XkKA6HTsV6FsLpcNL8Z1VpFeVvGPb3_VLIxn0DmiO5EuRTAJRJaa1wZJjPuEgQrtXgLAQ34-TKOsUJaY5hzPVSE9rtU_PisXrG8kHnMSJGp3xRCrz_5EyOb_m0yvGqtlFdxSxlYk2y2UVyBQeZx5xiVIvp23quO4FZdKebtLUEKu_"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
+<button class="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-red-700">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4">
+<h3 class="text-base font-semibold text-text-light-primary dark:text-text-dark-primary truncate">Graphic Print Tee</h3>
+<p class="text-lg font-bold text-primary">$29.99</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base">star</span>
+<span class="text-xs text-text-light-secondary dark:text-text-dark-secondary ml-1">(210)</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative overflow-hidden">
+<img class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Vintage style black t-shirt with a graphic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5i2sG7XZqOD2RjlE70WdlLSui6f_KogvKimWsPytNrFLTsx0rVEMpuwjfurCINiRJp75llhPbbCCN0FooLVMqyw9TxxQ35wD_BXYLARoufuN3BsaUg4LrdqvagaI8ltUsWzaWGtbcRlLmsDMHxdVDEVZa9aT_Sa4vI3YZEYxVDxD-GC8aFfpfhnbTQi8u96GsyKRocEcgUQulWS5VFa92xdV_22rO_kSgdahJ-J-CTs8iCRqiOe0XYxDbe9ZkEt8UHiG-Bb9V_G_W"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
+<button class="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-red-700">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4">
+<h3 class="text-base font-semibold text-text-light-primary dark:text-text-dark-primary truncate">Vintage Wash Tee</h3>
+<p class="text-lg font-bold text-primary">$35.00</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs text-text-light-secondary dark:text-text-dark-secondary ml-1">(75)</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative overflow-hidden">
+<img class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Gray athletic t-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvjFxM-m9JiX1v64zwEGxQqfVTu01xnXmPm4SFhhz2srLMLPWLf4eJXQDXH83FDv0JYK-C488KjPlNbZnIfPkCq9IIUodqRdZaDrxLLnrELe8TrBiwY1mzHXUvEDBFgdT9zaixYVxSWGkTnyClXvTyioZ33gwhKRuep4THhhK94OHCYWUufaZ2i2Z71hL7w6h4l58yKZYEccSiw5R65Fgyoz2g7FFEB3zLREciaK3W6cjyUUMWz-PVXBEH9B1y8A7_XOW6ggbxzplh"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
+<button class="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-red-700">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4">
+<h3 class="text-base font-semibold text-text-light-primary dark:text-text-dark-primary truncate">Performance Dry-Fit Tee</h3>
+<p class="text-lg font-bold text-primary">$42.99</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base">star_half</span>
+<span class="text-xs text-text-light-secondary dark:text-text-dark-secondary ml-1">(150)</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative overflow-hidden">
+<img class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Man wearing a white t-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQIuBgQd7mrjBUGnOYyVsr32JlLiLGRLw3N27jeKSk3dE6lIZZKN7IGLrsN9qDnDNyhKahsDUVA5LHkHbPvdLOuJrLkfHw71tV1xb5RQrPXdWge1pMJziNDw4uOL8xfDHAxuqP6s_ly6K_PLR-e2HOw-ObTVJ23AHlsJ0kw03PCME5M86Mv-tfwio-WRwtR6EJXav394lI6A5eQVM8Il_u1yi7qoQJ0xSAGQw8wE9ESiFhC-Ukt-SFj-ds-J2v6uSGkO6i1dBDx5rt"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
+<button class="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-red-700">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4">
+<h3 class="text-base font-semibold text-text-light-primary dark:text-text-dark-primary truncate">Long Sleeve Henley Tee</h3>
+<p class="text-lg font-bold text-primary">$38.50</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-base">star</span>
+<span class="text-xs text-text-light-secondary dark:text-text-dark-secondary ml-1">(88)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center">
+<nav aria-label="Pagination" class="flex items-center gap-2">
+<a class="inline-flex items-center justify-center size-10 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-border-light dark:hover:bg-border-dark transition-colors" href="#">
+<span class="material-symbols-outlined">chevron_left</span>
+</a>
+<a class="inline-flex items-center justify-center size-10 rounded-lg text-white bg-primary font-medium" href="#">1</a>
+<a class="inline-flex items-center justify-center size-10 rounded-lg text-text-light-primary dark:text-text-dark-primary hover:bg-border-light dark:hover:bg-border-dark font-medium transition-colors" href="#">2</a>
+<a class="inline-flex items-center justify-center size-10 rounded-lg text-text-light-primary dark:text-text-dark-primary hover:bg-border-light dark:hover:bg-border-dark font-medium transition-colors" href="#">3</a>
+<span class="inline-flex items-center justify-center size-10 text-text-light-primary dark:text-text-dark-primary">...</span>
+<a class="inline-flex items-center justify-center size-10 rounded-lg text-text-light-primary dark:text-text-dark-primary hover:bg-border-light dark:hover:bg-border-dark font-medium transition-colors" href="#">10</a>
+<a class="inline-flex items-center justify-center size-10 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-border-light dark:hover:bg-border-dark transition-colors" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

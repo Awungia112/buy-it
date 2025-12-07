@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Homepage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f20d0d",
+              "background-light": "#f8f5f5",
+              "background-dark": "#221010",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 dark:border-b-gray-800 px-6 md:px-10 py-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-gray-800 dark:text-gray-200">
+<div class="text-primary">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Brand</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Shop</a>
+<a class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Categories</a>
+<a class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">About Us</a>
+<a class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-500 dark:text-gray-400 flex bg-gray-100 dark:bg-gray-800 items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary focus:ring-opacity-50 border-none bg-gray-100 dark:bg-gray-800 h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDXZKeBPU9jc3B5-TeEpyG3x4SNZLq9rOsnbYHQbte4EqWpIHSRcYdPNP_go4o5K9pTqpxToPokDh87rMGt7KN05PJivYxDflV07wl_qE_UnDTKGdPsmomF7HQf5yoz-KDPQtsGOhKzHYCE_VMK1BZ-Qu_saA3kLEQdtnuofI7o2DvEaFU9Tteizq7njzkFobKpsx4nwz-DFDfBdY_4rmajH0CfLGAyJJ1iz2aNsBbMnFY6zszpfJyJHoeBLFtkN7tgtr0XVzA_fP2C");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-6 lg:px-10 py-8">
+<div class="max-w-7xl mx-auto flex flex-col gap-12">
+<section class="@container">
+<div class="@[480px]:p-0">
+<div class="flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 text-center" data-alt="Fashion model wearing new season's clothes in a stylish urban setting" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5Hf3oE8vXG1F8tjUBPKJ3j2NhWG91H1mSo0LVzQHGnFJuBppHPYSMaENkFz3mpelgMJYir-NCJOOPj500mlx1oXOGS5Ro0JoBt584v72g1I6IXPvH4kCOuRQCz24C1bFGNTzPmyoIUOFSZUArvah5q68IbWg7vLc0nguZnTsLHVudqiLUJGxFLRap7d4fp5fcRI5qQaoWrr6n8DIRraYRLVLdisE_dWB6-dRj-6Jtx87iuXvvtqrfMVcwHkAEa1HjaZXS0Opix8uC");'>
+<div class="flex flex-col gap-4">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-6xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">New Season Arrivals</h1>
+<h2 class="text-white text-base font-normal leading-normal @[480px]:text-lg @[480px]:font-normal @[480px]:leading-normal max-w-xl mx-auto">Discover the latest trends and styles for this season. Unveiling our new collection designed for the modern trendsetter.</h2>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors duration-200">
+<span class="truncate">Shop Now</span>
+</button>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-gray-800 dark:text-gray-200 text-2xl font-bold leading-tight tracking-[-0.015em] px-4 pb-4">Shop by Category</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="group relative bg-cover bg-center flex flex-col rounded-lg justify-end p-4 aspect-[4/5] overflow-hidden cursor-pointer" data-alt="Stylish man wearing a modern casual outfit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCdxTxS7bHEpQgma6N_cjQwgw92FVfSoDySo9iQV7CdCJdF_2wa7iQBlN8vxnf4bd-JGM8d-k0pPvkXSR2F9bxNUgzu7TFucULA4rYG01xIMfYmFuxTdiY2ZabTmRTuyNGCpZk86wes9un9fz3wxN4lx2V9_XLAAL9ReBfwLVXvkN6k47BI-BdTcaOg6Nkt1-0Rz6wHJGoQ_hEXvO6tXchmR9p6Ql3-MU_5nn687VHnq6Kpvdgcrh_C9NI6aNuZplU21DDAdW7Slz8H");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<p class="relative text-white text-lg font-bold leading-tight line-clamp-2 z-10">Men's Apparel</p>
+</div>
+<div class="group relative bg-cover bg-center flex flex-col rounded-lg justify-end p-4 aspect-[4/5] overflow-hidden cursor-pointer" data-alt="Close-up of elegant women's high-heeled shoes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfLxADR5yJus2aEFcODtIIiNzubSwlPKwlDpJDoelPWwr9rgEaKTKGSGInG_kQHdFsF9yvPZuvJevbMqJkSMQ9nbkn_eVl1HgWhWH6SgBq9jX1xBFGGiy7UAW0dZcLrbFXLiIA4BqYEOjFrHCSd-JY9YzrIb9p4wSldAHBTd_E9Uxeq99cbGtJ0AaY6aup4Sv3Vtz5h_PnJbwrrMHX06RXxN9-U9dYcRiHzoTahgtVDQPEH6BrNudPx7a1lPnf8lF-THaxcN_UAH4y");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<p class="relative text-white text-lg font-bold leading-tight line-clamp-2 z-10">Women's Footwear</p>
+</div>
+<div class="group relative bg-cover bg-center flex flex-col rounded-lg justify-end p-4 aspect-[4/5] overflow-hidden cursor-pointer" data-alt="A collection of fashion accessories including a watch, sunglasses, and a handbag" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNmskTyaLTPYdtaqPLJw6BqPtGH6WhGQGOeNjmC9P6Q04Zth7yzM1LWE_kEY1h0JaFT2hGZGn9pyPouQGToSs2gvjCbFloR4g0uaEH1vt8JJWLyK-hkA6vx31cTDlTT6WDF5NiSlbWScIpHbcGrFCO4IB2Sn-wT6Cdzb15q84AUobYmhdEPnOHIYqYlDPmJ3TWnZbO9ifTFODx8MmF8GzlxlyW3PWaCsn0M2lxAwuKyt3BPcU4_bbRwE_AmV19LjFRTfuM4xW9lRok");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<p class="relative text-white text-lg font-bold leading-tight line-clamp-2 z-10">Accessories</p>
+</div>
+<div class="group relative bg-cover bg-center flex flex-col rounded-lg justify-end p-4 aspect-[4/5] overflow-hidden cursor-pointer" data-alt="A rack of new clothing items in a boutique store" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAGYFrL0E_CEKjdQMI5uJ-bnW_ILXXZ4T-Ag0RTJtzSeCs7kq-6GqiOBbs6gXd5eosOiSp6hp2peR-uRo0Enkke0JxOvOsB_nRNWw4vLFdyp9Z-sdoAA-0yMVHA7crrteyULh_Pv3JRdbgiV0pPB90EmcRPwyiGWMQACn5Ock-tjqVeh9I2UnvuIFZuPY2mARqpltBQOLQV9ATcHxJCYgpGvwOJUlAKw1HtqnVe_RNhLb3Hpl-lsEEXoeW-iQ4RazmkOv6NvO4hoqS");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<p class="relative text-white text-lg font-bold leading-tight line-clamp-2 z-10">New In</p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-gray-800 dark:text-gray-200 text-2xl font-bold leading-tight tracking-[-0.015em] px-4 pb-4">Featured Products</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div class="group flex flex-col gap-3 bg-white dark:bg-gray-900 rounded-lg overflow-hidden transition-shadow hover:shadow-xl">
+<div class="relative aspect-square w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A stylish modern wristwatch with a silver band." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT7TrkyVuARZpGJHXXRM8sNAKD0UCjFWULTEV5Ly5iU5OJ8ek3csQWnwGYFolsYhiiuuX0pEh-uiv_62wFH2J2zj-GasMeAT_0glIzMyAZhn_FgRj-fBDeEfuBJAQgujARtkmY4hQW2wm68oH9yJ_WAE_c6pHF-a97wwCxYEOdp0yNEsBXKC7VbLNANyWjCmlroYTEcJfF_LU_5sccsvMj0D81jKhHuhjdM8VytIPAo7NvP3zWKhQLE-YimNDVv0PTG2LNzLuSVzez"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="text-gray-800 dark:text-gray-200 font-semibold leading-snug">Classic Chronograph</h3>
+<p class="text-primary font-bold mt-1 mb-3">$199.99</p>
+<button class="mt-auto flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary hover:text-white transition-colors duration-200">Add to Cart</button>
+</div>
+</div>
+<div class="group flex flex-col gap-3 bg-white dark:bg-gray-900 rounded-lg overflow-hidden transition-shadow hover:shadow-xl">
+<div class="relative aspect-square w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A pair of red and black athletic running shoes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5oCFfA91FFYheAPmJiNaaX_s50pC0j0niiwDN2ngRV5gpV01bIHXPgtcKOxwQQ-653XSgNJQp1jJa4Nrb8XryWrh6V9M1CAnY-hK5pLb7TpC58ATQpK85S8Pqd4uZpbOr-zxqNIQoKevJFN7Xok7TEysleoQdafv-4jr3H7n7u-wfcDXqOnTl4zbXQHK9lKCTeaEU8vsNZxocrLeCRv3N0UsZ5dQa8iDzf8io2Ri3JHVBykjF6-5Nd3UArUyL4SLPf2uozb8LDe-O"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="text-gray-800 dark:text-gray-200 font-semibold leading-snug">Trail Runner Shoes</h3>
+<p class="text-primary font-bold mt-1 mb-3">$120.00</p>
+<button class="mt-auto flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary hover:text-white transition-colors duration-200">Add to Cart</button>
+</div>
+</div>
+<div class="group flex flex-col gap-3 bg-white dark:bg-gray-900 rounded-lg overflow-hidden transition-shadow hover:shadow-xl">
+<div class="relative aspect-square w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A pair of black wireless over-ear headphones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCQKd4uPqfugBtN9JWh99h0-t_1UPob2ZE1AMxQVQQz-qpku8ScfjeORX6u-1t20IuOA_1iYZgm1PQRPRFxY4cB8IAPAVuxwjwzSrAl_126fr_ElaeXhTp_h4rZ-e6pYlez4X6cE_9mJyRy7GfqYb1bW4MzE50NaUcKZtbV4T9JNteFd5hfSFTaaY3afWn1DCs6e778pVNsKZDfYL8eQlDGzYyPOfXRsUCrkHajUbDpBDCHok5QNlSzl-BVzQ_4EIsEmXVMnpQEUDf"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="text-gray-800 dark:text-gray-200 font-semibold leading-snug">Studio Headphones</h3>
+<p class="text-primary font-bold mt-1 mb-3">$249.50</p>
+<button class="mt-auto flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary hover:text-white transition-colors duration-200">Add to Cart</button>
+</div>
+</div>
+<div class="group flex flex-col gap-3 bg-white dark:bg-gray-900 rounded-lg overflow-hidden transition-shadow hover:shadow-xl">
+<div class="relative aspect-square w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A pair of classic black sunglasses with dark lenses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6rayA3PViMlx1RF-H24NtnH6eoo6Mh_2C3DkjN61DBeELwNHKuivr8EASMy5vawH6m2zsVGXYZhCC3mMYa3y_49Ym2HehnBC6Pp6uVKSKmaFJ07uGxRpUbP6HQ5AKGl_2QeWHnDJdw91PZ2eggOcfJiNZqP4Q8OBPywLYfSuR0gOsCcR3DDagT0BhjpzXWnhFbC72tWGFIjDG9A-Y69Tcx5kfg4eseAdp6YFKMjBTSVQY7B4Tl3ygEy8Q3EiBBPF3QChH4-HvavlT"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="text-gray-800 dark:text-gray-200 font-semibold leading-snug">Aviator Sunglasses</h3>
+<p class="text-primary font-bold mt-1 mb-3">$85.00</p>
+<button class="mt-auto flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary hover:text-white transition-colors duration-200">Add to Cart</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 mt-12">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+<div class="col-span-2 lg:col-span-1">
+<div class="flex items-center gap-2 text-gray-800 dark:text-gray-200 mb-4">
+<div class="text-primary">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold">Brand</h2>
+</div>
+<p class="text-sm">Your destination for modern style and timeless quality.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-gray-800 dark:text-gray-200">Customer Service</h4>
+<a class="hover:text-primary transition-colors" href="#">Help &amp; FAQ</a>
+<a class="hover:text-primary transition-colors" href="#">Returns &amp; Exchanges</a>
+<a class="hover:text-primary transition-colors" href="#">Shipping Information</a>
+<a class="hover:text-primary transition-colors" href="#">Track Order</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-gray-800 dark:text-gray-200">Company</h4>
+<a class="hover:text-primary transition-colors" href="#">About Us</a>
+<a class="hover:text-primary transition-colors" href="#">Careers</a>
+<a class="hover:text-primary transition-colors" href="#">Press</a>
+<a class="hover:text-primary transition-colors" href="#">Affiliates</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-gray-800 dark:text-gray-200">Legal</h4>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Cookie Policy</a>
+</div>
+<div class="col-span-2 md:col-span-1">
+<h4 class="font-bold text-gray-800 dark:text-gray-200">Newsletter</h4>
+<p class="text-sm mt-3 mb-4">Subscribe for the latest deals and new arrivals.</p>
+<form class="flex">
+<input class="form-input w-full rounded-l-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-primary focus:border-primary text-sm" placeholder="Your email" type="email"/>
+<button class="bg-primary text-white px-4 rounded-r-md hover:bg-red-700 transition-colors" type="submit">Go</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
+<p>© 2024 Brand. All Rights Reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a aria-label="Facebook" href="#"><svg class="h-6 w-6 hover:text-primary" fill="currentColor" viewbox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+<a aria-label="Twitter" href="#"><svg class="h-6 w-6 hover:text-primary" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.212 3.793 4.649-.65.177-1.339.23-2.043.188.613 1.953 2.383 3.372 4.491 3.415-1.816 1.422-4.106 2.146-6.627 2.063C1.332 21.033 3.65 21.875 6.22 21.875c7.294 0 11.45-6.177 11.157-11.728l.001-.002.001-.002c.79-.57 1.476-1.282 2.016-2.083z"></path></svg></a>
+<a aria-label="Instagram" href="#"><svg class="h-6 w-6 hover:text-primary" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"></path></svg></a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

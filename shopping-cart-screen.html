@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#f20d0d",
+            "background-light": "#f8f5f5",
+            "background-dark": "#221010",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 px-4 sm:px-6 lg:px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-3xl"> local_mall </span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">E-commerce Site</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary" href="#">Home</a>
+<a class="text-sm font-medium leading-normal text-primary" href="#">Shop</a>
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary" href="#">Deals</a>
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary" href="#">Contact</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-500 dark:text-gray-400 flex bg-gray-100 dark:bg-gray-800 items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined"> search </span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-gray-200 focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-gray-800 h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full size-10 bg-transparent text-gray-600 dark:text-gray-300 hover:bg-primary/10 hover:text-primary">
+<span class="material-symbols-outlined"> favorite </span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full size-10 bg-primary/20 text-primary">
+<span class="material-symbols-outlined"> shopping_cart </span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture, abstract colorful pattern" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBf-8BVxltl2uPTFeaSq1CJvzzMnCs0ZF2ftEocJMOtO-NpTFrU6j9MMFW9uJXNJQLEWBxp9w3QkHrszDm7FbLsutqrXiOAO5d6dHTLLe-mZdbbz17Nvh8IV63ntrq1K95sCugmcKM3fj4i5o4RgMNkIHdN0nRq1m7OU2HiQvXHaGWnmp8c4Q9r1KGPuctqA6OqRFaAsAJS3T2BmkBcSxLn-wKmwSn9U0yRzSpzrea7rkFgAcSaITpUYu8QqXJFrl8QLk1i4wI5_sB9');"></div>
+</div>
+</header>
+<main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-wrap gap-2 py-4">
+<a class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary" href="#">Home</a>
+<span class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">/</span>
+<span class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal">Shopping Cart</span>
+</div>
+<div class="flex flex-wrap justify-between items-center gap-3 pb-6">
+<p class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Shopping Cart</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+<div class="col-span-1 lg:col-span-2 space-y-4">
+<div class="bg-white dark:bg-background-dark p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
+<div class="flex gap-4 py-4 justify-between items-center border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-start gap-4 flex-grow">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]" data-alt="A premium quality charcoal hoodie" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCP8ejjKJBKz9MiCC4N4a5ZFDYteqQqdHkXgoWjbAvfRh-QZo6_aXxERAa35aT70jOIaZyITjxV5FtXXdPXCCEqF4KoH5DtOWClt9teD9TrWermU1JYaUVTLT069kAyoVDUqsfbuZyHPed1rj8M55nOEt9ewuWy_7IKAcqon6FoSs6tcvcYU4PdEEs-oXjo2F2pYd5JMpFDuwjLPGJFOM6YRW9UlEG3oS-yat-h3piGdRkvWBrsA6z9n03pZpOMWkHy7UNaOdhaaA_A');"></div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Premium Quality Hoodie</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$45.00</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Color: Charcoal, Size: Large</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="shrink-0">
+<div class="flex items-center gap-2 text-gray-900 dark:text-white">
+<button class="text-base font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">-</button>
+<input class="text-base font-medium leading-normal w-6 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 focus:border-none border-none [appearance:textfield] [&amp;::-webkit-inner-spin-button]:appearance-none [&amp;::-webkit-outer-spin-button]:appearance-none" type="number" value="1"/>
+<button class="text-base font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">+</button>
+</div>
+</div>
+<p class="text-base font-medium text-gray-900 dark:text-white hidden sm:block">$45.00</p>
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary">
+<span class="material-symbols-outlined"> close </span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 py-4 justify-between items-center">
+<div class="flex items-start gap-4 flex-grow">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]" data-alt="A classic red t-shirt" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnOPVG2kik7jxjMmi7rw5mNPCj-qexPA2bKW8tLydCWfHmtkmkWAlXOYFZOoKalbcijwq-06JWJagzVuagxDivf_VKiFAULphsVoYnm52qjAgQvUSlQeJSDx3vbgUctc_MkhQpr57eXqXdS7lKwp2FpFywSaBMVM4FXsH0wgjK-BsUgjMsJ0xMqestupPSntubsgILtM_gq4YxlRwdPoLfCW7SdgTXxt4zsTx2vfJ2KeitMb7j03CBuMwy0iTmFz60a1LaXLSEs3R9');"></div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Classic Red T-Shirt</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$25.00</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Color: Red, Size: Medium</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="shrink-0">
+<div class="flex items-center gap-2 text-gray-900 dark:text-white">
+<button class="text-base font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">-</button>
+<input class="text-base font-medium leading-normal w-6 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 focus:border-none border-none [appearance:textfield] [&amp;::-webkit-inner-spin-button]:appearance-none [&amp;::-webkit-outer-spin-button]:appearance-none" type="number" value="2"/>
+<button class="text-base font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">+</button>
+</div>
+</div>
+<p class="text-base font-medium text-gray-900 dark:text-white hidden sm:block">$50.00</p>
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary">
+<span class="material-symbols-outlined"> close </span>
+</button>
+</div>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-medium hover:underline" href="#">
+<span class="material-symbols-outlined"> arrow_back </span>
+              Continue Shopping
+            </a>
+</div>
+<div class="col-span-1 lg:col-span-1">
+<div class="bg-white dark:bg-background-dark p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800 space-y-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Order Summary</h3>
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-gray-500 dark:text-gray-400">Subtotal</span>
+<span class="font-medium text-gray-800 dark:text-gray-200">$95.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-500 dark:text-gray-400">Estimated Shipping &amp; Tax</span>
+<span class="font-medium text-gray-800 dark:text-gray-200">$5.00</span>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold text-gray-900 dark:text-white">Total</span>
+<span class="text-lg font-bold text-gray-900 dark:text-white">$100.00</span>
+</div>
+<button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300 mt-4">
+                Proceed to Checkout
+              </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
