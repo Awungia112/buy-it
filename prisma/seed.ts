@@ -125,6 +125,270 @@ async function main() {
         });
     }
 
+    // Create sample users
+    const users = [
+        {
+            name: 'John Doe',
+            email: 'john@example.com',
+        },
+        {
+            name: 'Jane Smith',
+            email: 'jane@example.com',
+        },
+        {
+            name: 'Mike Johnson',
+            email: 'mike@example.com',
+        },
+        {
+            name: 'Sarah Wilson',
+            email: 'sarah@example.com',
+        },
+        {
+            name: 'David Brown',
+            email: 'david@example.com',
+        },
+        {
+            name: 'Emily Davis',
+            email: 'emily@example.com',
+        },
+        {
+            name: 'Chris Lee',
+            email: 'chris@example.com',
+        },
+        {
+            name: 'Lisa Garcia',
+            email: 'lisa@example.com',
+        },
+    ];
+
+    for (const user of users) {
+        await prisma.user.create({
+            data: user,
+        });
+    }
+
+    // Get created users and products
+    const createdUsers = await prisma.user.findMany();
+    const createdProducts = await prisma.product.findMany();
+
+    // Create sample orders with varied statuses and dates spanning 12 months
+    const orders = [
+        // Recent orders (last 30 days)
+        {
+            userId: createdUsers[0].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+            items: [
+                { productId: createdProducts[0].id, quantity: 1, price: createdProducts[0].price },
+                { productId: createdProducts[1].id, quantity: 1, price: createdProducts[1].price },
+            ],
+        },
+        {
+            userId: createdUsers[1].id,
+            status: 'PROCESSING',
+            createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 days ago
+            items: [
+                { productId: createdProducts[2].id, quantity: 1, price: createdProducts[2].price },
+            ],
+        },
+        {
+            userId: createdUsers[2].id,
+            status: 'SHIPPED',
+            createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // 1 week ago
+            items: [
+                { productId: createdProducts[3].id, quantity: 2, price: createdProducts[3].price },
+                { productId: createdProducts[4].id, quantity: 1, price: createdProducts[4].price },
+            ],
+        },
+        {
+            userId: createdUsers[3].id,
+            status: 'PENDING',
+            createdAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // 10 days ago
+            items: [
+                { productId: createdProducts[5].id, quantity: 1, price: createdProducts[5].price },
+            ],
+        },
+        {
+            userId: createdUsers[4].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000), // 15 days ago
+            items: [
+                { productId: createdProducts[6].id, quantity: 1, price: createdProducts[6].price },
+                { productId: createdProducts[7].id, quantity: 1, price: createdProducts[7].price },
+                { productId: createdProducts[8].id, quantity: 1, price: createdProducts[8].price },
+            ],
+        },
+
+        // Orders from 1-3 months ago
+        {
+            userId: createdUsers[5].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000), // ~1.5 months ago
+            items: [
+                { productId: createdProducts[9].id, quantity: 1, price: createdProducts[9].price },
+                { productId: createdProducts[10].id, quantity: 2, price: createdProducts[10].price },
+            ],
+        },
+        {
+            userId: createdUsers[6].id,
+            status: 'CANCELLED',
+            createdAt: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000), // 2 months ago
+            items: [
+                { productId: createdProducts[11].id, quantity: 1, price: createdProducts[11].price },
+            ],
+        },
+        {
+            userId: createdUsers[7].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 75 * 24 * 60 * 60 * 1000), // ~2.5 months ago
+            items: [
+                { productId: createdProducts[12].id, quantity: 3, price: createdProducts[12].price },
+                { productId: createdProducts[13].id, quantity: 1, price: createdProducts[13].price },
+            ],
+        },
+
+        // Orders from 3-6 months ago
+        {
+            userId: createdUsers[0].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 100 * 24 * 60 * 60 * 1000), // ~3.3 months ago
+            items: [
+                { productId: createdProducts[14].id, quantity: 1, price: createdProducts[14].price },
+                { productId: createdProducts[15].id, quantity: 1, price: createdProducts[15].price },
+                { productId: createdProducts[0].id, quantity: 1, price: createdProducts[0].price },
+            ],
+        },
+        {
+            userId: createdUsers[1].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 120 * 24 * 60 * 60 * 1000), // 4 months ago
+            items: [
+                { productId: createdProducts[1].id, quantity: 2, price: createdProducts[1].price },
+                { productId: createdProducts[2].id, quantity: 1, price: createdProducts[2].price },
+            ],
+        },
+        {
+            userId: createdUsers[2].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 150 * 24 * 60 * 60 * 1000), // 5 months ago
+            items: [
+                { productId: createdProducts[3].id, quantity: 1, price: createdProducts[3].price },
+                { productId: createdProducts[4].id, quantity: 1, price: createdProducts[4].price },
+                { productId: createdProducts[5].id, quantity: 1, price: createdProducts[5].price },
+                { productId: createdProducts[6].id, quantity: 1, price: createdProducts[6].price },
+            ],
+        },
+
+        // Orders from 6-9 months ago
+        {
+            userId: createdUsers[3].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 200 * 24 * 60 * 60 * 1000), // ~6.5 months ago
+            items: [
+                { productId: createdProducts[7].id, quantity: 2, price: createdProducts[7].price },
+                { productId: createdProducts[8].id, quantity: 1, price: createdProducts[8].price },
+            ],
+        },
+        {
+            userId: createdUsers[4].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 240 * 24 * 60 * 60 * 1000), // 8 months ago
+            items: [
+                { productId: createdProducts[9].id, quantity: 1, price: createdProducts[9].price },
+                { productId: createdProducts[10].id, quantity: 1, price: createdProducts[10].price },
+                { productId: createdProducts[11].id, quantity: 1, price: createdProducts[11].price },
+            ],
+        },
+        {
+            userId: createdUsers[5].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 270 * 24 * 60 * 60 * 1000), // 9 months ago
+            items: [
+                { productId: createdProducts[12].id, quantity: 1, price: createdProducts[12].price },
+            ],
+        },
+
+        // Orders from 9-12 months ago
+        {
+            userId: createdUsers[6].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 300 * 24 * 60 * 60 * 1000), // 10 months ago
+            items: [
+                { productId: createdProducts[13].id, quantity: 1, price: createdProducts[13].price },
+                { productId: createdProducts[14].id, quantity: 2, price: createdProducts[14].price },
+            ],
+        },
+        {
+            userId: createdUsers[7].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 330 * 24 * 60 * 60 * 1000), // 11 months ago
+            items: [
+                { productId: createdProducts[15].id, quantity: 1, price: createdProducts[15].price },
+                { productId: createdProducts[0].id, quantity: 1, price: createdProducts[0].price },
+                { productId: createdProducts[1].id, quantity: 1, price: createdProducts[1].price },
+            ],
+        },
+        {
+            userId: createdUsers[0].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 360 * 24 * 60 * 60 * 1000), // 12 months ago
+            items: [
+                { productId: createdProducts[2].id, quantity: 1, price: createdProducts[2].price },
+                { productId: createdProducts[3].id, quantity: 1, price: createdProducts[3].price },
+            ],
+        },
+        {
+            userId: createdUsers[1].id,
+            status: 'COMPLETED',
+            createdAt: new Date(Date.now() - 365 * 24 * 60 * 60 * 1000), // ~12 months ago
+            items: [
+                { productId: createdProducts[4].id, quantity: 1, price: createdProducts[4].price },
+            ],
+        },
+    ];
+
+    for (const orderData of orders) {
+        const total = orderData.items.reduce((sum, item) => sum + Number(item.price) * item.quantity, 0);
+
+        const order = await prisma.order.create({
+            data: {
+                userId: orderData.userId,
+                total,
+                status: orderData.status,
+                createdAt: orderData.createdAt,
+            },
+        });
+
+        for (const item of orderData.items) {
+            await prisma.orderItem.create({
+                data: {
+                    orderId: order.id,
+                    productId: item.productId,
+                    quantity: item.quantity,
+                    price: item.price,
+                },
+            });
+        }
+    }
+
+    // Create sample ratings
+    const ratings = [
+        { userId: createdUsers[0].id, productId: createdProducts[0].id, rating: 5, comment: 'Amazing sound quality!' },
+        { userId: createdUsers[1].id, productId: createdProducts[0].id, rating: 4, comment: 'Great headphones, very comfortable.' },
+        { userId: createdUsers[2].id, productId: createdProducts[1].id, rating: 5, comment: 'Perfect smart watch for fitness tracking.' },
+        { userId: createdUsers[3].id, productId: createdProducts[2].id, rating: 4, comment: 'Excellent camera, worth the price.' },
+        { userId: createdUsers[4].id, productId: createdProducts[3].id, rating: 5, comment: 'Stylish and protective sunglasses.' },
+        { userId: createdUsers[5].id, productId: createdProducts[4].id, rating: 4, comment: 'Beautiful leather bag, very durable.' },
+        { userId: createdUsers[6].id, productId: createdProducts[5].id, rating: 5, comment: 'Best mechanical keyboard I\'ve used!' },
+        { userId: createdUsers[7].id, productId: createdProducts[6].id, rating: 4, comment: 'Great gaming mouse, very responsive.' },
+    ];
+
+    for (const rating of ratings) {
+        await prisma.rating.create({
+            data: rating,
+        });
+    }
+
     console.log('Seed data inserted successfully');
 }
 

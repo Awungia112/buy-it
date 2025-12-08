@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
         hostname: 'imgs.search.brave.com',
       },
     ],
+    // Allow local uploads folder
+    unoptimized: true,
   },
   reactCompiler: true,
 };
