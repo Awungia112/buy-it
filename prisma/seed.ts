@@ -10,6 +10,13 @@ async function main() {
             description: 'Experience crystal clear sound with our premium wireless headphones. Features active noise cancellation and 30-hour battery life.',
             price: 299.99,
             image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80',
+                'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&q=80',
+                'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&q=80'
+            ],
+            colors: ['Black', 'White', 'Silver'],
+            category: 'Electronics',
             stock: 50,
         },
         {
@@ -17,6 +24,13 @@ async function main() {
             description: 'Stay connected and healthy with the latest Smart Watch. Tracks heart rate, sleep, and workouts.',
             price: 399.99,
             image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80',
+                'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&q=80',
+                'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&q=80'
+            ],
+            colors: ['Black', 'Silver', 'Rose Gold'],
+            category: 'Electronics',
             stock: 30,
         },
         {
@@ -24,6 +38,13 @@ async function main() {
             description: 'Capture life\'s moments in stunning detail with this professional camera kit. Includes 2 lenses and a carrying case.',
             price: 1299.99,
             image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80',
+                'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=500&q=80',
+                'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=500&q=80'
+            ],
+            colors: ['Black'],
+            category: 'Electronics',
             stock: 15,
         },
         {
@@ -31,6 +52,13 @@ async function main() {
             description: 'Protect your eyes in style with these designer sunglasses. UV400 protection.',
             price: 159.99,
             image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80',
+                'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&q=80',
+                'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=500&q=80'
+            ],
+            colors: ['Black', 'Brown', 'Clear'],
+            category: 'Fashion',
             stock: 100,
         },
         {
@@ -38,6 +66,13 @@ async function main() {
             description: 'Handcrafted leather bag perfect for weekend getaways. Durable and stylish.',
             price: 249.99,
             image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80',
+                'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&q=80',
+                'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&q=80'
+            ],
+            colors: ['Brown', 'Black', 'Tan'],
+            category: 'Fashion',
             stock: 25,
         },
         {
@@ -45,6 +80,13 @@ async function main() {
             description: 'Tactile and responsive mechanical keyboard for the ultimate typing experience. RGB backlighting.',
             price: 129.99,
             image: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=500&q=80',
+                'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&q=80',
+                'https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80'
+            ],
+            colors: ['Black', 'White', 'RGB'],
+            category: 'Electronics',
             stock: 40,
         },
         {
@@ -52,6 +94,13 @@ async function main() {
             description: 'Precision gaming mouse with customizable DPI settings and ergonomic design. Perfect for competitive gaming.',
             price: 79.99,
             image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&q=80',
+                'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80',
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&q=80'
+            ],
+            colors: ['Black', 'White', 'RGB'],
+            category: 'Electronics',
             stock: 75,
         },
         {
@@ -59,6 +108,13 @@ async function main() {
             description: 'Compact and powerful Bluetooth speaker with 360-degree sound and waterproof design. Great for outdoor activities.',
             price: 89.99,
             image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80',
+                'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80',
+                'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80'
+            ],
+            colors: ['Black', 'Blue', 'Red'],
+            category: 'Electronics',
             stock: 60,
         },
         {
@@ -66,6 +122,13 @@ async function main() {
             description: 'Advanced fitness tracker with heart rate monitoring, GPS, and sleep tracking. Water-resistant up to 50 meters.',
             price: 149.99,
             image: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&q=80',
+                'https://images.unsplash.com/photo-1544117519-31a4b719223d?w=500&q=80',
+                'https://images.unsplash.com/photo-1506629905607-0b5ab9a9e21a?w=500&q=80'
+            ],
+            colors: ['Black', 'White', 'Pink'],
+            category: 'Electronics',
             stock: 45,
         },
         {
@@ -73,6 +136,13 @@ async function main() {
             description: 'Professional-grade webcam with 4K resolution, auto-focus, and built-in microphone. Perfect for content creators.',
             price: 199.99,
             image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&q=80',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&q=80',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&q=80'
+            ],
+            colors: ['Black'],
+            category: 'Electronics',
             stock: 35,
         },
         {
@@ -80,6 +150,13 @@ async function main() {
             description: 'Premium ergonomic office chair with lumbar support and adjustable height. Designed for long work sessions.',
             price: 349.99,
             image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80',
+                'https://images.unsplash.com/photo-1541558869434-2840d308329a?w=500&q=80',
+                'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&q=80'
+            ],
+            colors: ['Black', 'White', 'Gray'],
+            category: 'Furniture',
             stock: 20,
         },
         {
@@ -87,6 +164,13 @@ async function main() {
             description: 'Control all your smart home devices from one central hub. Voice-activated and compatible with major platforms.',
             price: 129.99,
             image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80',
+                'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80',
+                'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80'
+            ],
+            colors: ['White', 'Black'],
+            category: 'Electronics',
             stock: 55,
         },
         {
@@ -94,6 +178,13 @@ async function main() {
             description: 'Fast wireless charging pad compatible with all Qi-enabled devices. Sleek design with LED indicators.',
             price: 39.99,
             image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&q=80',
+                'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&q=80',
+                'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&q=80'
+            ],
+            colors: ['White', 'Black'],
+            category: 'Electronics',
             stock: 90,
         },
         {
@@ -101,6 +192,13 @@ async function main() {
             description: 'Compact in-ear headphones with active noise cancellation and premium sound quality. Perfect for travel.',
             price: 179.99,
             image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80',
+                'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80',
+                'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80'
+            ],
+            colors: ['Black', 'White'],
+            category: 'Electronics',
             stock: 70,
         },
         {
@@ -108,6 +206,13 @@ async function main() {
             description: 'Professional digital drawing tablet with pressure sensitivity and battery-free stylus. Perfect for artists.',
             price: 249.99,
             image: 'https://images.unsplash.com/photo-1609921141835-710b7fa6e438?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1609921141835-710b7fa6e438?w=500&q=80',
+                'https://images.unsplash.com/photo-1609921141835-710b7fa6e438?w=500&q=80',
+                'https://images.unsplash.com/photo-1609921141835-710b7fa6e438?w=500&q=80'
+            ],
+            colors: ['Black'],
+            category: 'Electronics',
             stock: 30,
         },
         {
@@ -115,6 +220,13 @@ async function main() {
             description: 'High-capacity power bank with fast charging and multiple USB ports. Keep your devices charged on the go.',
             price: 49.99,
             image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=500&q=80',
+            images: [
+                'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=500&q=80',
+                'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=500&q=80',
+                'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=500&q=80'
+            ],
+            colors: ['Black', 'White', 'Blue'],
+            category: 'Electronics',
             stock: 85,
         },
     ];
