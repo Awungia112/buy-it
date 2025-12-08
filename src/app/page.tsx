@@ -15,10 +15,7 @@ export default async function Home() {
         <section className="relative mb-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div
-              className="relative flex min-h-[480px] md:min-h-[560px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 md:p-12 text-center overflow-hidden"
-              style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5Hf3oE8vXG1F8tjUBPKJ3j2NhWG91H1mSo0LVzQHGnFJuBppHPYSMaENkFz3mpelgMJYir-NCJOOPj500mlx1oXOGS5Ro0JoBt584v72g1I6IXPvH4kCOuRQCz24C1bFGNTzPmyoIUOFSZUArvah5q68IbWg7vLc0nguZnTsLHVudqiLUJGxFLRap7d4fp5fcRI5qQaoWrr6n8DIRraYRLVLdisE_dWB6-dRj-6Jtx87iuXvvtqrfMVcwHkAEa1HjaZXS0Opix8uC")`,
-              }}
+              className="relative flex min-h-[480px] md:min-h-[560px] flex-col gap-6 bg-gradient-to-br from-primary via-red-600 to-pink-600 rounded-2xl items-center justify-center p-8 md:p-12 text-center overflow-hidden"
             >
               <div className="flex flex-col gap-6 z-10 max-w-4xl">
                 <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
@@ -70,36 +67,42 @@ export default async function Home() {
               {[
                 {
                   name: "Men's Apparel",
-                  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCdxTxS7bHEpQgma6N_cjQwgw92FVfSoDySo9iQV7CdCJdF_2wa7iQBlN8vxnf4bd-JGM8d-k0pPvkXSR2F9bxNUgzu7TFucULA4rYG01xIMfYmFuxTdiY2ZabTmRTuyNGCpZk86wes9un9fz3wxN4lx2V9_XLAAL9ReBfwLVXvkN6k47BI-BdTcaOg6Nkt1-0Rz6wHJGoQ_hEXvO6tXchmR9p6Ql3-MU_5nn687VHnq6Kpvdgcrh_C9NI6aNuZplU21DDAdW7Slz8H",
+                  color: "from-blue-500 to-blue-700",
+                  icon: "checkroom",
                 },
                 {
                   name: "Women's Footwear",
-                  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfLxADR5yJus2aEFcODtIIiNzubSwlPKwlDpJDoelPWwr9rgEaKTKGSGInG_kQHdFsF9yvPZuvJevbMqJkSMQ9nbkn_eVl1HgWhWH6SgBq9jX1xBFGGiy7UAW0dZcLrbFXLiIA4BqYEOjFrHCSd-JY9YzrIb9p4wSldAHBTd_E9Uxeq99cbGtJ0AaY6aup4Sv3Vtz5h_PnJbwrrMHX06RXxN9-U9dYcRiHzoTahgtVDQPEH6BrNudPx7a1lPnf8lF-THaxcN_UAH4y",
+                  color: "from-pink-500 to-pink-700",
+                  icon: "steps",
                 },
                 {
                   name: "Accessories",
-                  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCNmskTyaLTPYdtaqPLJw6BqPtGH6WhGQGOeNjmC9P6Q04Zth7yzM1LWE_kEY1h0JaFT2hGZGn9pyPouQGToSs2gvjCbFloR4g0uaEH1vt8JJWLyK-hkA6vx31cTDlTT6WDF5NiSlbWScIpHbcGrFCO4IB2Sn-wT6Cdzb15q84AUobYmhdEPnOHIYqYlDPmJ3TWnZbO9ifTFODx8MmF8GzlxlyW3PWaCsn0M2lxAwuKyt3BPcU4_bbRwE_AmV19LjFRTfuM4xW9lRok",
+                  color: "from-purple-500 to-purple-700",
+                  icon: "watch",
                 },
                 {
                   name: "New In",
-                  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCAGYFrL0E_CEKjdQMI5uJ-bnW_ILXXZ4T-Ag0RTJtzSeCs7kq-6GqiOBbs6gXd5eosOiSp6hp2peR-uRo0Enkke0JxOvOsB_nRNWw4vLFdyp9Z-sdoAA-0yMVHA7crrteyULh_Pv3JRdbgiV0pPB90EmcRPwyiGWMQACn5Ock-tjqVeh9I2UnvuIFZuPY2mARqpltBQOLQV9ATcHxJCYgpGvwOJUlAKw1HtqnVe_RNhLb3Hpl-lsEEXoeW-iQ4RazmkOv6NvO4hoqS",
+                  color: "from-green-500 to-green-700",
+                  icon: "new_releases",
                 },
               ].map((cat) => (
                 <Link
                   key={cat.name}
                   href="/products"
-                  className="group relative bg-cover bg-center flex flex-col rounded-lg justify-end p-4 aspect-[4/5] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                  className="group relative flex flex-col rounded-lg justify-center items-center p-6 aspect-[4/5] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-gradient-to-br text-white"
                 >
-                  <Image
-                    src={cat.img}
-                    alt={cat.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <p className="relative text-white text-lg font-bold leading-tight line-clamp-2 z-10">
-                    {cat.name}
-                  </p>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-90 group-hover:opacity-100 transition-opacity`}></div>
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                    <span className="material-symbols-outlined text-6xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
+                      {cat.icon}
+                    </span>
+                    <h3 className="text-xl font-bold leading-tight">
+                      {cat.name}
+                    </h3>
+                    <p className="text-sm opacity-80 mt-2">
+                      Shop Now →
+                    </p>
+                  </div>
                 </Link>
               ))}
             </div>
