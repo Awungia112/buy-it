@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { addToCart } from "./actions";
 import { ProductRating } from "@/components/ProductRating";
+import { ProductImageGallery } from "@/components/ProductImageGallery";
 import { ProductDetailSkeleton } from "@/components/SkeletonLoader";
 import { Suspense } from "react";
 
@@ -47,32 +48,11 @@ async function ProductContent({ id }: { id: string }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         {/* Image Gallery Column */}
-        <div className="flex flex-col gap-4">
-          <div className="w-full relative aspect-[4/3] bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-          <div className="grid grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="w-full relative aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
-              >
-                <Image
-                  src={product.image}
-                  alt={`${product.name} view ${i}`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <ProductImageGallery
+          mainImage={product.image}
+          additionalImages={product.images || []}
+          productName={product.name}
+        />
 
         {/* Product Information Column */}
         <div className="flex flex-col gap-6">
@@ -96,6 +76,30 @@ async function ProductContent({ id }: { id: string }) {
             ${Number(product.price).toFixed(2)}
           </p>
 
+          {/* Available Colors */}
+          {product.colors && product.colors.length > 0 && (
+            <div className="flex flex-col gap-3">
+              <h3 className="text-lg font-semibold text-black dark:text-white">Available Colors</h3>
+              <div className="flex flex-wrap gap-3">
+                {product.colors.map((color, index) => (
+                  <div
+                    key={`${color}-${index}`}
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+                  >
+                    <div
+                      className="w-5 h-5 rounded-full border border-gray-300"
+                      style={{
+                        backgroundColor: color.startsWith('#') ? color : undefined,
+                        background: !color.startsWith('#') ? color : undefined
+                      }}
+                    />
+                    <span className="text-sm font-medium text-black dark:text-white">{color}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="border-t border-gray-200 dark:border-gray-700 pt-6 space-y-6">
             <form action={addToCart}>
               <input type="hidden" name="productId" value={product.id} />
@@ -103,21 +107,25 @@ async function ProductContent({ id }: { id: string }) {
               {/* Variant Selector: Size (Static for now) */}
               <div className="mb-6">
                 <label
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-base font-semibold text-black dark:text-white mb-3"
                   htmlFor="size"
                 >
                   Size
                 </label>
                 <select
-                  className="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary focus:ring-primary"
+                  className="w-full rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-black dark:text-white focus:border-primary focus:ring-2 focus:ring-primary text-base py-3 px-4"
                   id="size"
                   name="size"
+                  aria-describedby="size-help"
                 >
                   <option>S</option>
                   <option>M</option>
                   <option>L</option>
                   <option>XL</option>
                 </select>
+                <p id="size-help" className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  Select your preferred size
+                </p>
               </div>
 
               {/* Action Panel */}
@@ -153,24 +161,28 @@ async function ProductContent({ id }: { id: string }) {
           {/* Accordion for Details */}
           <div className="space-y-4 border-t border-gray-200 dark:border-gray-700 pt-6">
             <details className="group" open>
-              <summary className="flex justify-between items-center cursor-pointer list-none py-2 text-text-light-primary dark:text-text-dark-primary">
-                <span className="font-medium">Full Description</span>
-                <span className="material-symbols-outlined transition-transform group-open:rotate-180">
+              <summary className="flex justify-between items-center cursor-pointer list-none py-3 px-1 text-black dark:text-white hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
+                <span className="font-semibold text-base">
+                  Full Description
+                </span>
+                <span className="material-symbols-outlined transition-transform group-open:rotate-180 text-gray-600 dark:text-gray-400">
                   expand_more
                 </span>
               </summary>
-              <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm leading-relaxed">
+              <p className="text-gray-800 dark:text-gray-300 mt-3 text-base leading-relaxed pl-1">
                 {product.description}
               </p>
             </details>
             <details className="group">
-              <summary className="flex justify-between items-center cursor-pointer list-none py-2 text-text-light-primary dark:text-text-dark-primary">
-                <span className="font-medium">Shipping & Returns</span>
-                <span className="material-symbols-outlined transition-transform group-open:rotate-180">
+              <summary className="flex justify-between items-center cursor-pointer list-none py-3 px-1 text-black dark:text-white hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
+                <span className="font-semibold text-base">
+                  Shipping & Returns
+                </span>
+                <span className="material-symbols-outlined transition-transform group-open:rotate-180 text-gray-600 dark:text-gray-400">
                   expand_more
                 </span>
               </summary>
-              <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm leading-relaxed">
+              <p className="text-gray-800 dark:text-gray-300 mt-3 text-base leading-relaxed pl-1">
                 Free standard shipping on all orders. We accept returns within
                 30 days of purchase for a full refund, provided the item is in
                 its original, unworn condition.

@@ -11,7 +11,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <TolgeeProvider>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem={false}
         >
           {children}

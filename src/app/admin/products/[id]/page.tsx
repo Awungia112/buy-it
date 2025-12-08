@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { AdminLayout } from '@/components/AdminLayout';
-import { ImageUpload } from '@/components/ImageUpload';
-import { updateProduct, deleteProduct } from '../actions';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { AdminLayout } from "@/components/AdminLayout";
+import { MultipleImageUpload } from "@/components/MultipleImageUpload";
+import { ColorSelector } from "@/components/ColorSelector";
+import { updateProduct, deleteProduct } from "../actions";
 
 interface Product {
   id: string;
@@ -12,6 +13,8 @@ interface Product {
   description: string;
   price: number;
   image: string;
+  images: string[];
+  colors: string[];
   stock: number;
   createdAt: string;
   updatedAt: string;
@@ -22,7 +25,8 @@ interface EditProductPageProps {
 }
 
 export default function EditProductPage({ params }: EditProductPageProps) {
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [colors, setColors] = useState<string[]>([]);
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -34,17 +38,20 @@ export default function EditProductPage({ params }: EditProductPageProps) {
         if (response.ok) {
           const productData = await response.json();
           setProduct(productData);
-          setImageUrl(productData.image);
+          // Combine main image with additional images
+          setImageUrls([productData.image, ...(productData.images || [])]);
+          // Set colors
+          setColors(productData.colors || []);
         }
       } catch (error) {
-        console.error('Failed to load product:', error);
+        console.error("Failed to load product:", error);
       } finally {
         setLoading(false);
       }
     });
   }, [params]);
 
-  // Wrapper functions to handle the image URL from state
+  // Wrapper functions to handle the image URLs from state
   async function handleUpdateProduct(formData: FormData) {
     const enhancedFormData = new FormData();
 
@@ -53,16 +60,20 @@ export default function EditProductPage({ params }: EditProductPageProps) {
       enhancedFormData.append(key, value);
     }
 
-    // Override the image field with the URL from state if available
-    if (imageUrl) {
-      enhancedFormData.set('image', imageUrl);
+    // Set the main image (first image) and additional images
+    if (imageUrls.length > 0) {
+      enhancedFormData.set('image', imageUrls[0]);
+      enhancedFormData.set('images', JSON.stringify(imageUrls.slice(1)));
     }
 
-    await updateProduct(product?.id || '', enhancedFormData);
+    // Set the colors
+    enhancedFormData.set('colors', JSON.stringify(colors));
+
+    await updateProduct(product?.id || "", enhancedFormData);
   }
 
   async function handleDeleteProduct() {
-    await deleteProduct(product?.id || '');
+    await deleteProduct(product?.id || "");
   }
 
   if (loading) {
@@ -79,7 +90,9 @@ export default function EditProductPage({ params }: EditProductPageProps) {
     return (
       <AdminLayout title="Edit Product">
         <div className="text-center py-12">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Product not found</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            Product not found
+          </h2>
           <Link href="/admin/products" className="text-primary hover:underline">
             Back to Products
           </Link>
@@ -92,7 +105,9 @@ export default function EditProductPage({ params }: EditProductPageProps) {
     <AdminLayout title="Edit Product">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-black dark:text-white">Edit Product</h1>
+          <h1 className="text-2xl font-bold text-black dark:text-white">
+            Edit Product
+          </h1>
           <Link
             href="/admin/products"
             className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
@@ -104,7 +119,10 @@ export default function EditProductPage({ params }: EditProductPageProps) {
         <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
           <form action={handleUpdateProduct} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              >
                 Product Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -119,7 +137,10 @@ export default function EditProductPage({ params }: EditProductPageProps) {
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              >
                 Description <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -135,7 +156,10 @@ export default function EditProductPage({ params }: EditProductPageProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="price" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label
+                  htmlFor="price"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
                   Price ($) <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -152,7 +176,10 @@ export default function EditProductPage({ params }: EditProductPageProps) {
               </div>
 
               <div>
-                <label htmlFor="stock" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label
+                  htmlFor="stock"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
                   Stock Quantity <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -170,9 +197,16 @@ export default function EditProductPage({ params }: EditProductPageProps) {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Product Image <span className="text-red-500">*</span>
+                Product Images <span className="text-red-500">*</span>
               </label>
-              <ImageUpload value={imageUrl} onChange={setImageUrl} />
+              <MultipleImageUpload value={imageUrls} onChange={setImageUrls} />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Available Colors
+              </label>
+              <ColorSelector value={colors} onChange={setColors} />
             </div>
 
             <div className="flex gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
@@ -194,16 +228,23 @@ export default function EditProductPage({ params }: EditProductPageProps) {
 
         {/* Danger Zone */}
         <div className="mt-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-red-800 dark:text-red-300 mb-2">Danger Zone</h3>
+          <h3 className="text-lg font-semibold text-red-800 dark:text-red-300 mb-2">
+            Danger Zone
+          </h3>
           <p className="text-red-700 dark:text-red-400 text-sm mb-4">
-            Once you delete this product, there is no going back. This action cannot be undone.
+            Once you delete this product, there is no going back. This action
+            cannot be undone.
           </p>
           <form action={handleDeleteProduct}>
             <button
               type="submit"
               className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
               onClick={(e) => {
-                if (!confirm('Are you sure you want to delete this product? This action cannot be undone.')) {
+                if (
+                  !confirm(
+                    "Are you sure you want to delete this product? This action cannot be undone."
+                  )
+                ) {
                   e.preventDefault();
                 }
               }}
@@ -215,11 +256,21 @@ export default function EditProductPage({ params }: EditProductPageProps) {
 
         {/* Product Info */}
         <div className="mt-6 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Product Information</h3>
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Product Information
+          </h3>
           <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-            <p><strong>ID:</strong> {product.id}</p>
-            <p><strong>Created:</strong> {new Date(product.createdAt).toLocaleDateString()}</p>
-            <p><strong>Last Updated:</strong> {new Date(product.updatedAt).toLocaleDateString()}</p>
+            <p>
+              <strong>ID:</strong> {product.id}
+            </p>
+            <p>
+              <strong>Created:</strong>{" "}
+              {new Date(product.createdAt).toLocaleDateString()}
+            </p>
+            <p>
+              <strong>Last Updated:</strong>{" "}
+              {new Date(product.updatedAt).toLocaleDateString()}
+            </p>
           </div>
         </div>
       </div>

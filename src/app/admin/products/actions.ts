@@ -8,9 +8,11 @@ export async function createProduct(formData: FormData) {
   const description = formData.get('description') as string;
   const priceStr = formData.get('price') as string;
   const image = formData.get('image') as string;
+  const imagesStr = formData.get('images') as string;
+  const colorsStr = formData.get('colors') as string;
   const stockStr = formData.get('stock') as string;
 
-  console.log('Form data received:', { name, description, priceStr, image, stockStr });
+  console.log('Form data received:', { name, description, priceStr, image, imagesStr, colorsStr, stockStr });
 
   // Basic validation
   if (!name?.trim() || !description?.trim() || !priceStr?.trim() || !image?.trim() || !stockStr?.trim()) {
@@ -19,6 +21,8 @@ export async function createProduct(formData: FormData) {
 
   const price = parseFloat(priceStr);
   const stock = parseInt(stockStr);
+  const images = imagesStr ? JSON.parse(imagesStr) : [];
+  const colors = colorsStr ? JSON.parse(colorsStr) : [];
 
   if (isNaN(price) || price <= 0) {
     throw new Error('Price must be a valid positive number');
@@ -35,6 +39,8 @@ export async function createProduct(formData: FormData) {
         description: description.trim(),
         price,
         image: image.trim(),
+        images,
+        colors,
         stock,
       },
     });
@@ -56,9 +62,11 @@ export async function updateProduct(id: string, formData: FormData) {
   const description = formData.get('description') as string;
   const priceStr = formData.get('price') as string;
   const image = formData.get('image') as string;
+  const imagesStr = formData.get('images') as string;
+  const colorsStr = formData.get('colors') as string;
   const stockStr = formData.get('stock') as string;
 
-  console.log('Update form data received:', { id, name, description, priceStr, image, stockStr });
+  console.log('Update form data received:', { id, name, description, priceStr, image, imagesStr, colorsStr, stockStr });
 
   // Basic validation
   if (!name?.trim() || !description?.trim() || !priceStr?.trim() || !image?.trim() || !stockStr?.trim()) {
@@ -67,6 +75,8 @@ export async function updateProduct(id: string, formData: FormData) {
 
   const price = parseFloat(priceStr);
   const stock = parseInt(stockStr);
+  const images = imagesStr ? JSON.parse(imagesStr) : [];
+  const colors = colorsStr ? JSON.parse(colorsStr) : [];
 
   if (isNaN(price) || price <= 0) {
     throw new Error('Price must be a valid positive number');
@@ -84,6 +94,8 @@ export async function updateProduct(id: string, formData: FormData) {
         description: description.trim(),
         price,
         image: image.trim(),
+        images,
+        colors,
         stock,
       },
     });

@@ -3,15 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { AdminLayout } from '@/components/AdminLayout';
-import { ImageUpload } from '@/components/ImageUpload';
+import { MultipleImageUpload } from '@/components/MultipleImageUpload';
+import { ColorSelector } from '@/components/ColorSelector';
 import { createProduct } from '../actions';
 
 export default function NewProductPage() {
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [colors, setColors] = useState<string[]>([]);
 
-  // Wrapper function to include the image URL from state
+  // Wrapper function to include the image URLs and colors from state
   async function handleCreateProduct(formData: FormData) {
-    // Create a new FormData with the image URL from state
+    // Create a new FormData with the image URLs and colors from state
     const enhancedFormData = new FormData();
 
     // Copy all existing form data
@@ -19,10 +21,14 @@ export default function NewProductPage() {
       enhancedFormData.append(key, value);
     }
 
-    // Override the image field with the URL from state if available
-    if (imageUrl) {
-      enhancedFormData.set('image', imageUrl);
+    // Set the main image (first image) and additional images
+    if (imageUrls.length > 0) {
+      enhancedFormData.set('image', imageUrls[0]);
+      enhancedFormData.set('images', JSON.stringify(imageUrls.slice(1)));
     }
+
+    // Set the colors
+    enhancedFormData.set('colors', JSON.stringify(colors));
 
     await createProduct(enhancedFormData);
   }
@@ -105,9 +111,16 @@ export default function NewProductPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Product Image <span className="text-red-500">*</span>
+                Product Images <span className="text-red-500">*</span>
               </label>
-              <ImageUpload value={imageUrl} onChange={setImageUrl} />
+              <MultipleImageUpload value={imageUrls} onChange={setImageUrls} />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Available Colors
+              </label>
+              <ColorSelector value={colors} onChange={setColors} />
             </div>
 
             <div className="flex gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">

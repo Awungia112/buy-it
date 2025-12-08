@@ -120,9 +120,15 @@ async function main() {
     ];
 
     for (const product of products) {
-        await prisma.product.create({
-            data: product,
+        const existingProduct = await prisma.product.findFirst({
+            where: { name: product.name },
         });
+
+        if (!existingProduct) {
+            await prisma.product.create({
+                data: product,
+            });
+        }
     }
 
     // Create sample users
@@ -162,9 +168,15 @@ async function main() {
     ];
 
     for (const user of users) {
-        await prisma.user.create({
-            data: user,
+        const existingUser = await prisma.user.findUnique({
+            where: { email: user.email },
         });
+
+        if (!existingUser) {
+            await prisma.user.create({
+                data: user,
+            });
+        }
     }
 
     // Get created users and products
@@ -384,8 +396,15 @@ async function main() {
     ];
 
     for (const rating of ratings) {
-        await prisma.rating.create({
-            data: rating,
+        await prisma.rating.upsert({
+            where: {
+                userId_productId: {
+                    userId: rating.userId,
+                    productId: rating.productId,
+                },
+            },
+            update: rating,
+            create: rating,
         });
     }
 

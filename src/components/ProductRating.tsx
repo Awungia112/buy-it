@@ -48,13 +48,14 @@ export function ProductRating({
         <button
           key={i}
           type="button"
-          className={`text-2xl transition-colors ${
-            interactive ? "cursor-pointer hover:text-yellow-400" : ""
-          } ${filled ? "text-yellow-400" : "text-gray-300"}`}
+          className={`text-2xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded ${
+            interactive ? "cursor-pointer hover:text-yellow-500 hover:scale-110" : ""
+          } ${filled ? "text-yellow-500" : "text-gray-400 dark:text-gray-500"}`}
           onMouseEnter={() => interactive && setHoverRating(starValue)}
           onMouseLeave={() => interactive && setHoverRating(0)}
           onClick={() => interactive && handleRatingClick(starValue)}
           disabled={!interactive}
+          aria-label={interactive ? `Rate ${starValue} star${starValue !== 1 ? 's' : ''}` : undefined}
         >
           {filled ? "★" : "☆"}
         </button>
@@ -65,14 +66,14 @@ export function ProductRating({
   return (
     <div className="space-y-4">
       {/* Rating Display */}
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-1">
+      <div className="flex items-center gap-4" role="group" aria-label={`Product rating: ${currentRating.toFixed(1)} out of 5 stars`}>
+        <div className="flex items-center gap-1" aria-hidden="true">
           {renderStars(Math.round(currentRating))}
         </div>
-        <span className="text-lg font-semibold text-gray-900 dark:text-white">
+        <span className="text-xl font-bold text-black dark:text-white" aria-label={`${currentRating.toFixed(1)} out of 5 stars`}>
           {currentRating.toFixed(1)}
         </span>
-        <span className="text-sm text-gray-700 dark:text-gray-400">
+        <span className="text-sm font-medium text-gray-800 dark:text-gray-300" aria-label={`${totalRatings} customer reviews`}>
           ({totalRatings} reviews)
         </span>
       </div>
@@ -80,13 +81,13 @@ export function ProductRating({
       {/* User Rating Section */}
       {session && (
         <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-          <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
+          <h4 className="text-base font-semibold text-black dark:text-white mb-3" id="rating-section">
             Rate this product
           </h4>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2" role="group" aria-labelledby="rating-section">
             {renderStars(hoverRating || selectedRating, true)}
             {selectedRating > 0 && (
-              <span className="text-sm text-gray-700 dark:text-gray-400 ml-2">
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-300 ml-2" aria-live="polite">
                 You rated: {selectedRating} star
                 {selectedRating !== 1 ? "s" : ""}
               </span>
