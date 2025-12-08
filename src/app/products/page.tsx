@@ -10,12 +10,11 @@ export default async function ProductsPage({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await searchParams;
-  const search =
-    typeof params.search === "string" ? params.search : undefined;
-  const sort =
-    typeof params.sort === "string" ? params.sort : "newest";
-  const page =
-    typeof params.page === "string" ? parseInt(params.page) : 1;
+  const search = typeof params.search === "string" ? params.search : undefined;
+  const sort = typeof params.sort === "string" ? params.sort : "newest";
+  const page = typeof params.page === "string" ? parseInt(params.page) : 1;
+  const minPrice = typeof params.minPrice === "string" ? parseFloat(params.minPrice) : undefined;
+  const maxPrice = typeof params.maxPrice === "string" ? parseFloat(params.maxPrice) : undefined;
 
   const ITEMS_PER_PAGE = 20;
 
@@ -37,29 +36,45 @@ export default async function ProductsPage({
       break;
   }
 
-  // Get total count for pagination
-  const totalProducts = await prisma.product.count({
-    where: {
-      name: {
-        contains: search,
-        mode: "insensitive",
-      },
-    },
-  });
+  // Build where clause for filtering
+  const where: any = {};
+  
+  // Add search filter
+  if (search) {
+    where.name = {
+      contains: search,
+      mode: 'insensitive',
+    };
+  }
+
+  // Add price range filter
+  const priceFilter: any = {};
+  if (minPrice !== undefined) priceFilter.gte = minPrice;
+  if (maxPrice !== undefined) priceFilter.lte = maxPrice;
+  if (Object.keys(priceFilter).length > 0) {
+    where.price = priceFilter;
+  }
+
+  // Get total count for pagination with applied filters
+  const totalProducts = await prisma.product.count({ where });
 
   const totalPages = Math.ceil(totalProducts / ITEMS_PER_PAGE);
 
+  // Fetch products with applied filters, sorting, and pagination
   const products = await prisma.product.findMany({
-    where: {
-      name: {
-        contains: search,
-        mode: "insensitive",
-      },
-    },
+    where,
     orderBy,
     skip: (page - 1) * ITEMS_PER_PAGE,
     take: ITEMS_PER_PAGE,
   });
+
+  // Calculate price range for the slider
+  const priceRange = await prisma.product.aggregate({
+    _min: { price: true },
+    _max: { price: true },
+  });
+  const minPriceValue = Math.floor(priceRange._min.price || 0);
+  const maxPriceValue = Math.ceil(priceRange._max.price || 1000);
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col bg-background">
@@ -98,41 +113,72 @@ export default async function ProductsPage({
                   <h3 className="text-text-light-primary dark:text-text-dark-primary font-semibold mb-3">
                     Search
                   </h3>
-                  <form className="flex gap-2">
-                    <input
-                      type="text"
-                      name="search"
-                      placeholder="Search..."
-                      defaultValue={search}
-                      className="w-full rounded border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm"
-                    />
+                  <form method="get" className="space-y-4">
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        name="search"
+                        placeholder="Search products..."
+                        defaultValue={search}
+                        className="w-full rounded border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm"
+                      />
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-text-light-primary dark:text-text-dark-primary font-semibold mb-3">
+                        Price Range
+                      </h3>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-text-light-secondary dark:text-text-dark-secondary">
+                            ${minPrice || minPriceValue}
+                          </span>
+                          <span className="text-sm text-text-light-secondary dark:text-text-dark-secondary">
+                            ${maxPrice || maxPriceValue}
+                          </span>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                          <input
+                            type="range"
+                            name="minPrice"
+                            min={minPriceValue}
+                            max={maxPriceValue}
+                            defaultValue={minPrice || minPriceValue}
+                            className="w-full accent-primary"
+                          />
+                          <input
+                            type="range"
+                            name="maxPrice"
+                            min={minPriceValue}
+                            max={maxPriceValue}
+                            defaultValue={maxPrice || maxPriceValue}
+                            className="w-full accent-primary"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <input type="hidden" name="sort" value={sort} />
+                    
                     <button
                       type="submit"
-                      className="bg-primary text-white px-3 py-2 rounded hover:bg-red-700"
+                      className="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-red-700 transition-colors"
                     >
-                      Go
+                      Apply Filters
                     </button>
                   </form>
                 </div>
 
-                {/* Price Filter (Static UI for now) */}
-                <div className="border-t border-border-light dark:border-border-dark pt-6">
-                  <h3 className="text-text-light-primary dark:text-text-dark-primary font-semibold mb-3">
-                    Price Range
-                  </h3>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="range"
-                      min="0"
-                      max="1000"
-                      className="w-full accent-primary"
-                    />
-                  </div>
+                {/* Clear Filters Button */}
+                <div className="mt-4">
+                  <Link 
+                    href="/products"
+                    className="w-full flex items-center justify-center rounded-lg h-10 px-4 border border-gray-300 dark:border-gray-600 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    Clear All Filters
+                  </Link>
                 </div>
               </div>
-              <button className="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-red-700 dark:hover:bg-red-500 transition-colors">
-                Apply Filters
-              </button>
             </div>
           </aside>
 
