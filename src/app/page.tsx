@@ -15,8 +15,15 @@ export default async function Home() {
         <section className="relative mb-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div
-              className="relative flex min-h-[480px] md:min-h-[560px] flex-col gap-6 bg-gradient-to-br from-primary via-red-600 to-pink-600 rounded-2xl items-center justify-center p-8 md:p-12 text-center overflow-hidden"
+              className="relative flex min-h-[480px] md:min-h-[560px] flex-col gap-6 rounded-2xl items-center justify-center p-8 md:p-12 text-center overflow-hidden"
             >
+              <Image
+                src="/shared/fashion-modelmed.png"
+                alt="New Season Arrivals"
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-black/50"></div>
               <div className="flex flex-col gap-6 z-10 max-w-4xl">
                 <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
                   New Season Arrivals
@@ -67,39 +74,38 @@ export default async function Home() {
               {[
                 {
                   name: "Men's Apparel",
-                  color: "from-blue-500 to-blue-700",
-                  icon: "checkroom",
+                  image: "/shared/business-attire-for-men-business-suit-for-men-photo.jpg",
                 },
                 {
                   name: "Women's Footwear",
-                  color: "from-pink-500 to-pink-700",
-                  icon: "steps",
+                  image: "/shared/women-footweraphoto-1554062614-6da4fa67725a.jpeg",
                 },
                 {
                   name: "Accessories",
-                  color: "from-purple-500 to-purple-700",
-                  icon: "watch",
+                  image: "/shared/accessoriesq2j33dsfRWTElxxKOag9Y.jpg",
                 },
                 {
                   name: "New In",
-                  color: "from-green-500 to-green-700",
-                  icon: "new_releases",
+                  image: "/shared/new-in-157405186-612x612.jpg",
                 },
               ].map((cat) => (
                 <Link
                   key={cat.name}
                   href="/products"
-                  className="group relative flex flex-col rounded-lg justify-center items-center p-6 aspect-[4/5] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-gradient-to-br text-white"
+                  className="group relative flex flex-col rounded-lg justify-end items-start p-6 aspect-[4/5] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-white"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-90 group-hover:opacity-100 transition-opacity`}></div>
-                  <div className="relative z-10 flex flex-col items-center text-center">
-                    <span className="material-symbols-outlined text-6xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
-                      {cat.icon}
-                    </span>
+                  <Image
+                    src={cat.image}
+                    alt={cat.name}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="relative z-10">
                     <h3 className="text-xl font-bold leading-tight">
                       {cat.name}
                     </h3>
-                    <p className="text-sm opacity-80 mt-2">
+                    <p className="text-sm opacity-80 mt-1">
                       Shop Now →
                     </p>
                   </div>
