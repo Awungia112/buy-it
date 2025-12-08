@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { SortSelect } from "@/components/SortSelect";
 import { Pagination } from "@/components/Pagination";
+import { ProductSearch } from "@/components/ProductSearch";
+import { ProductFilters } from '@/components/ProductFilters';
 
 export default async function ProductsPage({
   searchParams,
@@ -15,6 +17,7 @@ export default async function ProductsPage({
   const page = typeof params.page === "string" ? parseInt(params.page) : 1;
   const minPrice = typeof params.minPrice === "string" ? parseFloat(params.minPrice) : undefined;
   const maxPrice = typeof params.maxPrice === "string" ? parseFloat(params.maxPrice) : undefined;
+  const category = typeof params.category === "string" ? params.category : undefined;
 
   const ITEMS_PER_PAGE = 20;
 
@@ -55,6 +58,11 @@ export default async function ProductsPage({
     where.price = priceFilter;
   }
 
+  // Add category filter
+  if (category) {
+    where.category = category;
+  }
+
   // Get total count for pagination with applied filters
   const totalProducts = await prisma.product.count({ where });
 
@@ -73,8 +81,17 @@ export default async function ProductsPage({
     _min: { price: true },
     _max: { price: true },
   });
-  const minPriceValue = Math.floor(priceRange._min.price || 0);
-  const maxPriceValue = Math.ceil(priceRange._max.price || 1000);
+  const minPriceValue = Math.floor(Number(priceRange._min.price) || 0);
+  const maxPriceValue = Math.ceil(Number(priceRange._max.price) || 1000);
+
+  // Get all unique categories for the filter
+  const categories = await prisma.product.findMany({
+    select: {
+      category: true,
+    },
+    distinct: ['category' as const],
+  });
+  const categoryList = categories.map(c => c.category).filter(Boolean) as string[];
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col bg-background">
@@ -98,88 +115,7 @@ export default async function ProductsPage({
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* SideNavBar / Filters */}
           <aside className="lg:col-span-1">
-            <div className="sticky top-28 flex flex-col gap-6 bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark">
-              <div className="flex justify-between items-center">
-                <h2 className="text-text-light-primary dark:text-text-dark-primary text-lg font-bold">
-                  Filters
-                </h2>
-                <button className="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium hover:text-primary dark:hover:text-primary">
-                  Clear All
-                </button>
-              </div>
-              {/* Filter Sections */}
-              <div className="flex flex-col gap-6">
-                <div className="border-t border-border-light dark:border-border-dark pt-6">
-                  <h3 className="text-text-light-primary dark:text-text-dark-primary font-semibold mb-3">
-                    Search
-                  </h3>
-                  <form method="get" className="space-y-4">
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        name="search"
-                        placeholder="Search products..."
-                        defaultValue={search}
-                        className="w-full rounded border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm"
-                      />
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-text-light-primary dark:text-text-dark-primary font-semibold mb-3">
-                        Price Range
-                      </h3>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm text-text-light-secondary dark:text-text-dark-secondary">
-                            ${minPrice || minPriceValue}
-                          </span>
-                          <span className="text-sm text-text-light-secondary dark:text-text-dark-secondary">
-                            ${maxPrice || maxPriceValue}
-                          </span>
-                        </div>
-                        <div className="flex gap-2 items-center">
-                          <input
-                            type="range"
-                            name="minPrice"
-                            min={minPriceValue}
-                            max={maxPriceValue}
-                            defaultValue={minPrice || minPriceValue}
-                            className="w-full accent-primary"
-                          />
-                          <input
-                            type="range"
-                            name="maxPrice"
-                            min={minPriceValue}
-                            max={maxPriceValue}
-                            defaultValue={maxPrice || maxPriceValue}
-                            className="w-full accent-primary"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <input type="hidden" name="sort" value={sort} />
-                    
-                    <button
-                      type="submit"
-                      className="w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-red-700 transition-colors"
-                    >
-                      Apply Filters
-                    </button>
-                  </form>
-                </div>
-
-                {/* Clear Filters Button */}
-                <div className="mt-4">
-                  <Link 
-                    href="/products"
-                    className="w-full flex items-center justify-center rounded-lg h-10 px-4 border border-gray-300 dark:border-gray-600 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    Clear All Filters
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <ProductFilters minPriceValue={minPriceValue} maxPriceValue={maxPriceValue} categories={categoryList} />
           </aside>
 
           {/* Main Content / Product Grid */}

@@ -11,8 +11,9 @@ export async function createProduct(formData: FormData) {
   const imagesStr = formData.get('images') as string;
   const colorsStr = formData.get('colors') as string;
   const stockStr = formData.get('stock') as string;
+  const category = formData.get('category') as string;
 
-  console.log('Form data received:', { name, description, priceStr, image, imagesStr, colorsStr, stockStr });
+  console.log('Form data received:', { name, description, priceStr, image, imagesStr, colorsStr, stockStr, category });
 
   // Basic validation
   if (!name?.trim() || !description?.trim() || !priceStr?.trim() || !image?.trim() || !stockStr?.trim()) {
@@ -42,6 +43,7 @@ export async function createProduct(formData: FormData) {
         images,
         colors,
         stock,
+        category: category?.trim() || 'Uncategorized',
       },
     });
 
@@ -65,8 +67,9 @@ export async function updateProduct(id: string, formData: FormData) {
   const imagesStr = formData.get('images') as string;
   const colorsStr = formData.get('colors') as string;
   const stockStr = formData.get('stock') as string;
+  const category = formData.get('category') as string;
 
-  console.log('Update form data received:', { id, name, description, priceStr, image, imagesStr, colorsStr, stockStr });
+  console.log('Update form data received:', { id, name, description, priceStr, image, imagesStr, colorsStr, stockStr, category });
 
   // Basic validation
   if (!name?.trim() || !description?.trim() || !priceStr?.trim() || !image?.trim() || !stockStr?.trim()) {
@@ -97,6 +100,7 @@ export async function updateProduct(id: string, formData: FormData) {
         images,
         colors,
         stock,
+        category: category?.trim() || 'Uncategorized',
       },
     });
 

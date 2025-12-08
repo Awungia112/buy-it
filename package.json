@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
     "migrate": "prisma migrate deploy"
@@ -17,6 +17,7 @@
     "@tolgee/i18next": "^6.2.7",
     "@tolgee/react": "^6.2.7",
     "clsx": "^2.1.1",
+    "i18next": "^25.7.2",
     "lucide-react": "^0.556.0",
     "next": "16.0.7",
     "next-auth": "^5.0.0-beta.30",
@@ -24,6 +25,7 @@
     "prisma": "5",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-is": "^19.2.1",
     "recharts": "^3.5.1",
     "tailwind-merge": "^3.4.0",
     "use-debounce": "^10.0.6",
